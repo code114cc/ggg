@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML тақырыбына бағалау парағы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #888;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        input[type="number"] {
+            width: 60px;
+        }
+        .total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📄 HTML тақырыбы бойынша бақылау жұмысы</h1>
+    <p><strong>Бағалау парағы:</strong> тапсырмаларға оқушы ұпайын енгізіңіз – баға автоматты түрде есептеледі.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Бөлім</th>
+                <th>Тапсырма сипаттамасы</th>
+                <th>Максимум ұпай</th>
+                <th>Оқушы ұпайы</th>
+            </tr>
+        </thead>
+        <tbody id="gradingTable">
+        </tbody>
+        <tfoot>
+            <tr class="total">
+                <td colspan="2">Жалпы ұпай:</td>
+                <td>20</td>
+                <td id="totalScore">0</td>
+            </tr>
+            <tr class="total">
+                <td colspan="2">Баға:</td>
+                <td colspan="2" id="gradeText">–</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        const tasks = [
+            { section: "І. Теория", desc: "1. HTML деген не?", max: 2 },
+            { section: "", desc: "2. Тег және элементтің айырмашылығы", max: 2 },
+            { section: "", desc: "3. head пен body айырмашылығы", max: 2 },
+            { section: "", desc: "4. HTML файлдың кеңейтімі қандай?", max: 2 },
+            { section: "", desc: "5. Сілтеме (<a>) және сурет (<img>) тегтерінің қызметі", max: 2 },
+            { section: "ІІ. Практика", desc: "1. HTML құжат құрылымын дұрыс жазу", max: 3 },
+            { section: "", desc: "2. Тақырып, абзац және тізім элементтерін қолдану", max: 3 },
+            { section: "", desc: "3. Сурет пен сілтеме енгізу", max: 2 },
+            { section: "", desc: "4. Құжатты дұрыс сақтау және ашу", max: 2 }
+        ];
+
+        const tableBody = document.getElementById('gradingTable');
+        const totalScoreEl = document.getElementById('totalScore');
+        const gradeTextEl = document.getElementById('gradeText');
+
+        function calculateTotal() {
+            let total = 0;
+            document.querySelectorAll('.score-input').forEach(input => {
+                const val = parseFloat(input.value);
+                if (!isNaN(val)) total += val;
+            });
+
+            totalScoreEl.textContent = total;
+
+            let grade = "–";
+            if (total >= 18) grade = "5 (Өте жақсы)";
+            else if (total >= 15) grade = "4 (Жақсы)";
+            else if (total >= 11) grade = "3 (Қанағаттанарлық)";
+            else if (total >= 6) grade = "2 (Қанағатсыз)";
+            else grade = "1 (Меңгерілмеген)";
+            gradeTextEl.textContent = grade;
+        }
+
+        tasks.forEach(task => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${task.section}</td>
+                <td>${task.desc}</td>
+                <td>${task.max}</td>
+                <td><input type="number" class="score-input" min="0" max="${task.max}" step="1" onchange="calculateTotal()"></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+
+</body>
+</html>

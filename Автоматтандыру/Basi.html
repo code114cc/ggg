@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компьютерлік желілер</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fff);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      opacity: 0;
+      animation: fadeInSlide 2s ease forwards;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInSlide 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      opacity: 0;
+      animation: fadeInSlide 2s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .btn:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Білімді бағалаудың автоматтандырылған жүйесіне қош келдіңіз!</h2>
+  <p>Жамбыл политехникалық жоғары колледжі</p>
+  <a href="index12.html"><button class="btn">Бастау</button></a>
+
+</body>
+</html>

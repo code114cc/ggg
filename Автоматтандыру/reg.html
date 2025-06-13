@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студенттердің Білімін Тексеру Тесті</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-container">
+        <h2>Тіркелу</h2>
+        <label for="username">Аты-жөніңіз:</label>
+        <input type="text" id="username" placeholder="Аты-жөніңізді енгізіңіз"><br>
+        <button onclick="register()">Тіркелу</button>
+        <h3>Немесе</h3>
+        <button onclick="showLogin()">Кіру</button>
+    </div>
+
+    <div id="login-form" style="display:none;">
+        <h2>Кіру</h2>
+        <label for="login-username">Аты-жөніңіз:</label>
+        <input type="text" id="login-username" placeholder="Кіру үшін аты-жөніңізді енгізіңіз"><br>
+        <button onclick="login()">Кіру</button>
+        <h3>Немесе</h3>
+        <button onclick="showRegister()">Тіркелу</button>
+    </div>
+
+    <div id="test-container" style="display:none;">
+        <h1>Тестке Қош Келдіңіз, <span id="user-name"></span></h1>
+        <div id="question-container">
+            <p id="question-text">Сұрақты күтіңіз...</p>
+            <div class="options">
+                <label><input type="radio" name="answer" value="1"> <span id="option1"></span></label><br>
+                <label><input type="radio" name="answer" value="2"> <span id="option2"></span></label><br>
+                <label><input type="radio" name="answer" value="3"> <span id="option3"></span></label><br>
+                <label><input type="radio" name="answer" value="4"> <span id="option4"></span></label><br>
+            </div>
+            <button id="next-button" onclick="nextQuestion()">Келесі сұрақ</button>
+        </div>
+
+        <div id="result-container" style="display:none;">
+            <h2>Нәтиже</h2>
+            <p id="score"></p>
+            <button onclick="restartTest()">Қайталау</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
